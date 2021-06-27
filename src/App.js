@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router";
+import { Route, Switch } from "react-router";
 import NavBar from "./components/navbar";
 import Products from "./components/products";
 import Posts from "./components/posts";
@@ -15,10 +15,12 @@ class App extends Component {
       <div>
         <NavBar />
         <div className='content'>
-          <Route path='/products' component={Products}/>
-          <Route path='/posts' component={Posts}/>
-          <Route path='/admin' component={Dashboard}/>
-          <Route path='/' component={Home}/>
+          <Switch>
+            <Route path='/products' component={Products}/>
+            <Route path='/posts' component={Posts}/>
+            <Route path='/admin' component={Dashboard}/>
+            <Route path='/' component={Home}/>
+          </Switch>
         </div>
       </div>
     );
@@ -26,3 +28,6 @@ class App extends Component {
 }
 
 export default App;
+
+//When using the switch component always order the child components from most specific to least specific. for example if I 
+//don't do that and have the home component as that top component only the home component will render and nothing else.
