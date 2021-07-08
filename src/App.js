@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router";
+import { Route, Switch, Redirect } from "react-router";
 import NavBar from "./components/navbar";
 import Products from "./components/products";
 import Posts from "./components/posts";
@@ -20,7 +20,10 @@ class App extends Component {
             <Route path='/products' render={(props) => <Products sortBy='newest' {...props}/>}/>
             <Route path='/posts/:year?/:month?' component={Posts}/>
             <Route path='/admin' component={Dashboard}/>
-            <Route path='/' component={Home}/>
+            <Redirect from='/messages' to='/posts'/>
+            <Route path='/not-found' component={NotFound}/> 
+            <Route path='/' exact component={Home}/>
+            <Redirect to='/not-found' />
           </Switch>
         </div>
       </div>
@@ -35,3 +38,7 @@ export default App;
 
 //The path paramters in the route prop are required when accessing url's; You can make these paramters optional by appending
 // a question mark after it. 
+
+//the Redirect object allows you to redirect users to other components under special conditions. You can accomplish this by 
+//giving the redirect components the to prop. In my example I implemented this method twice; the first to render a not found
+//page when the url 
