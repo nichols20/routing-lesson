@@ -1,11 +1,9 @@
-import React from "react";
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-const Dashboard = ({ match }) => {
-  return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <ul>
+const SideBar = () => {
+    return ( 
+        <ul>
         <li>
           <Link to="/admin/posts">Posts</Link>
         </li>
@@ -13,8 +11,7 @@ const Dashboard = ({ match }) => {
           <Link to="/admin/users">Users</Link>
         </li>
       </ul>
-    </div>
-  );
-};
-
-export default Dashboard;
+     );
+}
+ 
+export default SideBar;
