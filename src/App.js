@@ -18,7 +18,7 @@ class App extends Component {
           <Switch>
             <Route path="/products/:id" component={ProductDetails}/>
             <Route path='/products' render={(props) => <Products sortBy='newest' {...props}/>}/>
-            <Route path='/posts/:year/:month' component={Posts}/>
+            <Route path='/posts/:year?/:month?' component={Posts}/>
             <Route path='/admin' component={Dashboard}/>
             <Route path='/' component={Home}/>
           </Switch>
@@ -32,3 +32,6 @@ export default App;
 
 //When using the switch component always order the child components from most specific to least specific. for example if I 
 //don't do that and have the home component as that top component only the home component will render and nothing else.
+
+//The path paramters in the route prop are required when accessing url's; You can make these paramters optional by appending
+// a question mark after it. 
